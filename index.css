@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Yellowtail');
+
+body {
+    background-image: url(wood.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Yellowtail', cursive;
+}
+
+h1{
+    color: white;
+}
