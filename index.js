@@ -1,21 +1,15 @@
-console.log('testing')
-const button = document.querySelector('button')
+const form = document.querySelector('form')
 
-function changeHeading (){
-  document.querySelector('h1').textContent = 'This Spellbook Holds All Secrets'
+const changeHeading = function(ev) {
+  ev.preventDefault()
+
+  const f = ev.target
+  const spellName = f.spellName.value
+
+  const spellsDiv = document.querySelector('#spells')
+  spellsDiv.textContent += ' ' + spellName
+
+  f.reset()
 }
 
-button.addEventListener('click', changeHeading)
-
-function changeSecond(){
-    document.getElementById('secondHeader').innerHTML = "The Benefits Will Hurt Someone Else"
-}
-
-function form(){
-    document.getElementById('submit').innerText = 'header'
-}
-
-document.getElementById('Submit').onkeydown = function(e){
-    if(e.keyCode == 13){}
-}
-
+form.addEventListener('submit', changeHeading)

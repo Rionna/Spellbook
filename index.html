@@ -1,32 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Spellbook</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-    
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Spellbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 </head>
 <body>
-    <h1 id = 'header'>Spellbook</h1>
-    <button>Change Text</button>
+  <h1>Spellbook</h1>
 
-    <h2>Spells</h2>
+  <form>
+    <input type="text" name="spellName">
+    <button type="submit">Add</button>
+  </form>
 
-    <h2 id = 'secondHeader'>Benefits</h2>
-    <button onclick = 'changeSecond()'>Change Benefit</button>
+  <div id="spells">
 
-    <h2>Side Effects</h2>
+  </div>
 
-    <form>
-        What is your name?<br>
-        <input type = "text" name = 'spellName'>
-        <button type="submit">Add</button>
-    </form>
-    
-
-    <script src="index.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
-
