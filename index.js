@@ -1,6 +1,6 @@
 const form = document.querySelector('form')
 
-const changeHeading = function(ev) {
+const handleSumbit = function(ev) {
   ev.preventDefault()
 
   const f = ev.target
@@ -12,14 +12,14 @@ const changeHeading = function(ev) {
 
   //spellsDiv.innerHTML += `<li>${spellName}</li>`
 
-  var x = document.createElement("LI");
+  var item = document.createElement("LI");
   var t = document.createTextNode(spellName);
   t.se
-  x.appendChild(t);
-  x.style.color = textColor;
-  document.getElementById("spells").appendChild(x);
+  item.appendChild(t);
+  item.style.color = textColor;
+  document.getElementById("spells").appendChild(item);
   
   f.reset()
 }
 
-form.addEventListener('submit', changeHeading)
+form.addEventListener('submit', handleSumbit)
