@@ -66,7 +66,6 @@ const app = {
       this.moveDown.bind(this, spell)
     )
 
-
       return item
     },
   
@@ -88,6 +87,8 @@ const app = {
           // Move it on the page
           this.list.insertBefore(item.nextSibling, item)
         }
+
+        this.save()
       },
     
       moveUp: function(spell, ev) {
@@ -108,6 +109,8 @@ const app = {
           // Move it on the page
           this.list.insertBefore(item, item.previousSibling)
         }
+
+        this.save()
       },
 
     removeSpell: function(spell, ev) {
@@ -119,12 +122,15 @@ const app = {
       // Remove from the array
       const i = this.spells.indexOf(spell)
       this.spells.splice(i, 1)
+
+      this.save()
     },
   
     toggleFavorite: function(spell, ev) {
       const button = ev.target
       const item = button.closest('.spell')
       spell.favorite = item.classList.toggle('fav')
+      this.save()
     },
   
     handleSubmit: function(ev) {
@@ -143,9 +149,17 @@ const app = {
   
       this.list.appendChild(item)
   
+      this.save()
       f.reset()
       f.spellName.focus()
     },
+
+    save(){
+        localStorage.setItem(
+            'spells',
+            JSON.stringify(this.spells)
+        )
+    }
   }
   
-  app.init()
+  const app = new App()
