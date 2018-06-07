@@ -18,28 +18,37 @@ const app = {
     },
   
     renderItem: function(spell) {
-        const item = this.template.cloneNode(true)
-        item.classList.remove('template')
-
-        // ['name', 'level', etc.]
-        properties = Object.keys(spell)
-
-        // Replace the appropriate values in each <span>
-        properties.forEach(property => {
-            const el = item.querySelector(`.${property}`)
-            el.textContent = spell[property]
-            el.setAttribute('title', spell[property])
-        })
+      const item = this.template.cloneNode(true)
+      item.classList.remove('template')
   
-        // delete button
-        item
-            .querySelector('button.delete')
-            .addEventListener(
-            'click',
-            this.removeSpell.bind(this, spell)
+      // ['name', 'level', etc.]
+      properties = Object.keys(spell)
+  
+      // Replace the appropriate values in each <span>
+      properties.forEach(property => {
+        const el = item.querySelector(`.${property}`)
+        if (el) {
+          el.textContent = spell[property]
+          el.setAttribute('title', spell[property])
+        }
+      })
+  
+      // delete button
+      item
+        .querySelector('button.delete')
+        .addEventListener(
+          'click',
+          this.removeSpell.bind(this, spell)
         )
   
-        // fav button
+      // fav button
+      item
+        .querySelector('button.fav')
+        .addEventListener(
+          'click',
+          this.toggleFavorite.bind(this, spell)
+        )
+  
   
       return item
     },
@@ -55,6 +64,12 @@ const app = {
       this.spells.splice(i, 1)
     },
   
+    toggleFavorite: function(spell, ev) {
+      const button = ev.target
+      const item = button.closest('.spell')
+      spell.favorite = item.classList.toggle('fav')
+    },
+  
     handleSubmit: function(ev) {
       ev.preventDefault()
   
@@ -63,6 +78,7 @@ const app = {
       const spell = {
         name: f.spellName.value,
         level: f.level.value,
+        favorite: false,
       }
       this.spells.push(spell)
   
