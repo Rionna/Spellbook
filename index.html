@@ -16,13 +16,22 @@
 
   <form>
     <div>
-      <input type="text" name="spellName" placeholder="Enter Spell Name" autofocus>
-    </div>
-
-    Give your spell a color!
-    <input type="color" id="spellColor" value="#000000">
-    <br>
+            <input
+            type="text"
+            name="spellName"
+            placeholder="Enter a spell name"
+            autofocus
+          >
+          <input
+            type="number"
+            name="level"
+            placeholder="Level"
+            class="small"
+            min="1"
+            max="20"
+          >
     <button type="submit">Add</button>
+    </div>
   </form>
 
   <main>
